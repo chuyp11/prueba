@@ -11,7 +11,7 @@ import { Answer } from '../models/answer';
 @Injectable({
   providedIn: 'root'
 })
-export class MateriasService {
+export class AnswerService {
 
   answerCollection: AngularFirestoreCollection<Question>;
   answerDoc: AngularFirestoreDocument<Question>;
@@ -34,7 +34,7 @@ export class MateriasService {
 
   readAll(subject: Subject, section: Section, question: Question): Observable<Answer[]> {
     this.answerCollection = this.afs.collection<Answer>
-      (`subjects/${subject.id}/sections/${section.id}/questions/${question.id}/answers`, ref => ref.orderBy('sequence'));
+      (`subjects/${subject.id}/sections/${section.id}/questions/${question.id}/answers`, ref => ref.orderBy('index'));
     this.answers = this.answerCollection.valueChanges();
     return this.answers;
   }

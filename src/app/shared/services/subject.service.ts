@@ -6,7 +6,7 @@ import { Subject } from '../models/subject';
 @Injectable({
   providedIn: 'root'
 })
-export class MateriasService {
+export class SubjectService {
 
   subjectCollection: AngularFirestoreCollection<Subject>;
   subjectDoc: AngularFirestoreDocument<Subject>;
@@ -20,11 +20,12 @@ export class MateriasService {
     this.subjectCollection = this.afs.collection<Subject>('subjects');
     const id = this.afs.createId();
     subject.id = id;
+    console.log(subject);
     this.subjectCollection.doc(id).set(subject);
   }
 
   readAll(): Observable<Subject[]> {
-    this.subjectCollection = this.afs.collection<Subject>('subjects', ref => ref.orderBy('sequence'));
+    this.subjectCollection = this.afs.collection<Subject>('subjects', ref => ref.orderBy('index'));
     this.subjects = this.subjectCollection.valueChanges();
     return this.subjects;
   }

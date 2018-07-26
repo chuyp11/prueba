@@ -8,11 +8,27 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
+import { AppRoutingModule } from './app-routing.module';
+
+import {
+  MatCardModule,
+  MatIconModule,
+  MatToolbarModule,
+} from '@angular/material';
+
+import { ManageDBModule } from './manageDB/manage-db.module';
+import { PracticeModule } from './practice/practice.module';
+
 import { AppComponent } from './app.component';
+import { InicioComponent } from './shared/components/inicio';
+import { PruebaComponent } from './shared/components/prueba';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InicioComponent,
+    PruebaComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +37,12 @@ import { AppComponent } from './app.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    ManageDBModule,
+    PracticeModule,
+    AppRoutingModule,
+    MatCardModule,
+    MatIconModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

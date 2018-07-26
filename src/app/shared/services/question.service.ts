@@ -10,7 +10,7 @@ import { Question } from '../models/question';
 @Injectable({
   providedIn: 'root'
 })
-export class MateriasService {
+export class QuestionService {
 
   questionCollection: AngularFirestoreCollection<Question>;
   questionDoc: AngularFirestoreDocument<Question>;
@@ -32,7 +32,7 @@ export class MateriasService {
 
   readAll(subject: Subject, section: Section): Observable<Question[]> {
     this.questionCollection = this.afs.collection<Question>
-      (`subjects/${subject.id}/sections/${section.id}/questions`, ref => ref.orderBy('sequence'));
+      (`subjects/${subject.id}/sections/${section.id}/questions`, ref => ref.orderBy('index'));
     this.questions = this.questionCollection.valueChanges();
     return this.questions;
   }
